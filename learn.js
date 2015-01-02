@@ -2,10 +2,10 @@ var MyApp= angular.module("MyApp",['F12','ngRoute']);
 
 
 
-/*MyApp.run(function($rootScope){
+MyApp.run(function($rootScope){
 $rootScope.root = "Root value";
 $rootScope.catchme = "M56";
-});*/
+});
 
 MyApp.config(["$routeProvider", function($routeProvider){
 	$routeProvider
