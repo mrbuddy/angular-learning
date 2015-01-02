@@ -1,0 +1,81 @@
+<html>
+	<head>
+		<script type="text/javascript" src="angular.js"></script>
+		<script type="text/javascript" src="angular-route.js"></script>	
+		<script type="text/javascript" src="learn.js"></script>	
+		<script type="text/javascript" src="F12.js"></script>
+		<link rel="stylesheet" type="text/css" href="learn.css">	
+	</head>
+	<body>
+			<div ng-app="MyApp">		
+				I am out of controllers : <b>{{root}} </b><br/><br/>
+				<hr>
+				<h2> Angular JS: Learning Page </h2>
+				<a href="#/"> Basics</a> | 
+				<a href="#/moderate/{{catchme}}"> Moderate</a> | 
+				<a href="#/notexist"> Otherwise :P</a>
+				<br/><br/>
+					<script type="text/ng-template" id="basic.html">
+						<div ng-controller ="MyFirstController" ng-init="initname='initialized'">
+							<p class="curtime">
+								{{curtime}}
+							</p>
+							{{hardcodedname}}
+
+							<p ng-bind="bindname">
+							</p>
+
+							<input type="text" ng-model="inputname" placeholder="Bind with input">
+							<b>{{inputname}}  </b> (Bind value)
+
+							<p>
+								App initialization: <b> {{initname}} </b>
+							</p>
+							<br/><br/>
+							<div>
+								Key: <input type="text" ng-model="tkey">
+								Value: <input type="text" ng-model="tvalue">
+
+								<button ng-click="addtotable()"> Add </button> 
+								<br/><br/>
+								Local Storage Table:
+								<table>
+									<th> Key</th><th> Value</th>
+									<tr ng-repeat = "item in tdata track by $index">
+									<td> {{item.key}} </td>
+									<td> {{item.value}} </td>
+									</tr>
+								</table>
+							</div>
+						</div> 
+					</script>
+
+					<script type="text/ng-template" id="moderate.html">
+						<div ng-controller="MySecondController">
+							<h4>Passing Arguments to URL, Directives, More about Directives </h4>
+							Passed as argument (rootScope) - {{catchme}} <br/><br/>
+							{{sampledata.message}} <br/> <br/>
+
+							UrlId: {{urlid}} (Accessing rootScope variable as argument)
+							
+							<br/><br/><my-first-directive applycolor="mycolor" identity="mohan" arg1="Argument1">
+							<!--
+								<div> Click me !! </div>
+								
+								<!-- directive: my-first-directive -->
+									
+								<br/>Varibale from controller : {{dir1helper}} -->
+
+							</my-first-directive>
+							<br/>
+							<my-first-directive identity="someone">
+							</my-first-directive>
+						</div>
+					</script>
+				
+				<ng-view>
+						<!-- Random content goes here -->
+				</ng-view>
+			</div>
+	</body>
+</html>
