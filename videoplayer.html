@@ -1,0 +1,31 @@
+<html>
+<head>
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript" src="videoplayer.js"></script>
+	<link rel="stylesheet" type="text/css" href="videoplayer.css">
+</head>
+<body ng-app="video" ng-controller="videoCtrl">
+	<div class="container">
+		<div class="left">
+			<div>
+				Filepath : <input type="file" file-model="myFile"  accept='video/*'><br><br>
+				Type : <select ng-model="type" ng-options="type for type in types"> </select> <br><br>
+				<button ng-click="addtolist()"> Add to List </button><br/>
+			</div>
+			<br/><br/>
+			<div class="list"> <b>Play List: </b> <br/>
+				<label ng-repeat="item in items track by item.filename">
+				<input ng-click="setSelected(item)" type="radio" name="playitem" value="{{item.filename}}.{{item.type}}"> {{item.filename}}
+				<br>
+				</label>
+			</div>	
+			<br><center><button ng-click="play()"> Play </button> </center><br><br>
+		</div>
+		<div class="player" id="videoTag"></div>
+	</div>
+
+	
+
+	
+</body>
+</html>
